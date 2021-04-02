@@ -36,10 +36,7 @@ class AcsControlResultFactory implements AcsControlResultFactoryInterface
     public function create(array $data): AcsControlResultInterface
     {
         try {
-            return new AcsControlResult(
-                $data['status'],
-                $data['extra_time'] ?? null
-            );
+            return new AcsControlResult($data['status'], $data['extra_time'] ?? null);
         } catch (Throwable $exception) {
             throw new LtiException(
                 sprintf('Cannot create ACS control result: %s', $exception->getMessage()),

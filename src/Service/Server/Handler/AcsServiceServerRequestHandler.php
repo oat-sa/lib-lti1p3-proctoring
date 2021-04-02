@@ -76,14 +76,14 @@ class AcsServiceServerRequestHandler implements LtiServiceServerRequestHandlerIn
     public function getAllowedMethods(): array
     {
         return [
-            'POST'
+            'POST',
         ];
     }
 
     public function getAllowedScopes(): array
     {
         return [
-            static::AUTHORIZATION_SCOPE_CONTROL
+            static::AUTHORIZATION_SCOPE_CONTROL,
         ];
     }
 

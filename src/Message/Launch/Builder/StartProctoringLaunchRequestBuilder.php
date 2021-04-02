@@ -70,7 +70,6 @@ class StartProctoringLaunchRequestBuilder extends PlatformOriginatingLaunchBuild
                 ->withClaim(LtiMessagePayloadInterface::CLAIM_LTI_PROCTORING_ATTEMPT_NUMBER, $attemptNumber)
                 ->withClaim(LtiMessagePayloadInterface::CLAIM_LTI_PROCTORING_SESSION_DATA, $sessionDataToken);
 
-
             $launchUrl = $ltiResourceLink->getUrl() ?? $registration->getTool()->getLaunchUrl();
 
             if (null === $launchUrl) {
