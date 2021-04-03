@@ -37,6 +37,14 @@ interface AcsControlInterface extends JsonSerializable
     public const ACTION_UPDATE = 'update';
     public const ACTION_FLAG = 'flag';
 
+    public const SUPPORTED_ACTIONS = [
+        self::ACTION_PAUSE,
+        self::ACTION_RESUME,
+        self::ACTION_TERMINATE,
+        self::ACTION_UPDATE,
+        self::ACTION_FLAG,
+    ];
+
     public function getResourceLink(): LtiResourceLinkInterface;
 
     public function setResourceLink(LtiResourceLinkInterface $resourceLink): AcsControlInterface;

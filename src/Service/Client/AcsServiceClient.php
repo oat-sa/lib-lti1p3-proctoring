@@ -82,7 +82,7 @@ class AcsServiceClient implements AcsServiceInterface
                     'body' => $this->controlSerializer->serialize($control),
                 ],
                 [
-                    static::AUTHORIZATION_SCOPE_CONTROL
+                    static::AUTHORIZATION_SCOPE_CONTROL,
                 ]
             );
 

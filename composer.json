@@ -5,6 +5,7 @@
     "license": "GPL-2.0-only",
     "require": {
         "php": ">=7.2.0",
+        "ext-json": "*",
         "oat-sa/lib-lti1p3-core": "^5.0"
     },
     "require-dev": {

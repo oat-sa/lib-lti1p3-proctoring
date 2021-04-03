@@ -22,6 +22,8 @@ declare(strict_types=1);
 
 namespace OAT\Library\Lti1p3Proctoring\Model;
 
+use InvalidArgumentException;
+
 /**
  * @see https://www.imsglobal.org/spec/proctoring/v1p0#h.r9n0nket2gul
  */
@@ -35,7 +37,8 @@ class AcsControlResult implements AcsControlResultInterface
 
     public function __construct(string $status, ?int $extraTime = null)
     {
-        $this->status = $status;
+        $this->setStatus($status);
+
         $this->extraTime = $extraTime;
     }
 
@@ -44,9 +47,17 @@ class AcsControlResult implements AcsControlResultInterface
         return $this->status;
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function setStatus(string $status): AcsControlResultInterface
     {
+        if (!in_array($status, self::SUPPORTED_STATUSES)) {
+            throw new InvalidArgumentException(sprintf('Control result status %s is not supported', $status));
+        }
+
         $this->status = $status;
+
         return $this;
     }
 
@@ -67,7 +78,7 @@ class AcsControlResult implements AcsControlResultInterface
         return array_filter(
             [
                 'status' => $this->status,
-                'extra_time' => $this->extraTime
+                'extra_time' => $this->extraTime,
             ]
         );
     }

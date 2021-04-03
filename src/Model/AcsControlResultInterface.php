@@ -35,6 +35,14 @@ interface AcsControlResultInterface extends JsonSerializable
     public const STATUS_TERMINATED = 'terminated';
     public const STATUS_COMPLETE = 'complete';
 
+    public const SUPPORTED_STATUSES = [
+        self::STATUS_NONE,
+        self::STATUS_RUNNING,
+        self::STATUS_PAUSED,
+        self::STATUS_TERMINATED,
+        self::STATUS_COMPLETE,
+    ];
+
     public function getStatus(): string;
 
     public function setStatus(string $status): AcsControlResultInterface;

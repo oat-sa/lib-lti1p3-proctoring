@@ -23,6 +23,7 @@ declare(strict_types=1);
 namespace OAT\Library\Lti1p3Proctoring\Model;
 
 use DateTimeInterface;
+use InvalidArgumentException;
 use OAT\Library\Lti1p3Core\Resource\LtiResourceLink\LtiResourceLinkInterface;
 
 /**
@@ -65,16 +66,17 @@ class AcsControl implements AcsControlInterface
         string $userIdentifier,
         string $action,
         DateTimeInterface $incidentTime,
-        int $attemptNumber,
+        int $attemptNumber = 1,
         ?string $issuerIdentifier = null,
         ?int $extraTime = null,
         ?float $incidentSeverity = null,
         ?string $reasonCode = null,
         ?string $reasonMessage = null
     ) {
+        $this->setAction($action);
+
         $this->resourceLink = $resourceLink;
         $this->userIdentifier = $userIdentifier;
-        $this->action = $action;
         $this->incidentTime = $incidentTime;
         $this->attemptNumber = $attemptNumber;
         $this->issuerIdentifier = $issuerIdentifier;
@@ -113,8 +115,15 @@ class AcsControl implements AcsControlInterface
         return $this->action;
     }
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function setAction(string $action): AcsControlInterface
     {
+        if (!in_array($action, self::SUPPORTED_ACTIONS)) {
+            throw new InvalidArgumentException(sprintf('Control action %s is not supported', $action));
+        }
+
         $this->action = $action;
 
         return $this;
@@ -217,7 +226,9 @@ class AcsControl implements AcsControlInterface
                     'sub' => $this->userIdentifier,
                 ],
                 'resource_link' => [
-                    'id' => $this->resourceLink->getIdentifier()
+                    'id' => $this->resourceLink->getIdentifier(),
+                    'title' => $this->resourceLink->getTitle(),
+                    'description' => $this->resourceLink->getText(),
                 ],
                 'attempt_number' => $this->attemptNumber,
                 'action' => $this->action,
@@ -225,7 +236,7 @@ class AcsControl implements AcsControlInterface
                 'incident_time' => $incidentTime,
                 'incident_severity' => $this->incidentSeverity,
                 'reason_code' => $this->reasonCode,
-                'reason_message' => $this->reasonMessage
+                'reason_msg' => $this->reasonMessage,
             ]
         );
     }
