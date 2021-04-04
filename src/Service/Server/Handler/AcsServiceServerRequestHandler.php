@@ -31,6 +31,7 @@ use OAT\Library\Lti1p3Proctoring\Serializer\AcsControlResultSerializerInterface;
 use OAT\Library\Lti1p3Proctoring\Serializer\AcsControlSerializer;
 use OAT\Library\Lti1p3Proctoring\Serializer\AcsControlSerializerInterface;
 use OAT\Library\Lti1p3Proctoring\Service\AcsServiceInterface;
+use OAT\Library\Lti1p3Proctoring\Service\Server\Processor\AcsServiceServerControlProcessorInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 

@@ -25,7 +25,7 @@ First, you need to provide a [AcsServiceServerControlProcessorInterface](../../s
 use OAT\Library\Lti1p3Core\Registration\RegistrationInterface;
 use OAT\Library\Lti1p3Proctoring\Model\AcsControlInterface;
 use OAT\Library\Lti1p3Proctoring\Model\AcsControlResultInterface;
-use OAT\Library\Lti1p3Proctoring\Service\Server\Handler\AcsServiceServerControlProcessorInterface;
+use OAT\Library\Lti1p3Proctoring\Service\Server\Processor\AcsServiceServerControlProcessorInterface;
 
 /** @var AcsServiceServerControlProcessorInterface $processor */
 $processor = new class() implements AcsServiceServerControlProcessorInterface 
@@ -49,7 +49,7 @@ Then:
 use OAT\Library\Lti1p3Core\Registration\RegistrationRepositoryInterface;
 use OAT\Library\Lti1p3Core\Security\OAuth2\Validator\RequestAccessTokenValidator;
 use OAT\Library\Lti1p3Core\Service\Server\LtiServiceServer;
-use OAT\Library\Lti1p3Proctoring\Service\Server\Handler\AcsServiceServerControlProcessorInterface;
+use OAT\Library\Lti1p3Proctoring\Service\Server\Processor\AcsServiceServerControlProcessorInterface;
 use OAT\Library\Lti1p3Proctoring\Service\Server\Handler\AcsServiceServerRequestHandler;
 use Psr\Http\Message\ServerRequestInterface;
 

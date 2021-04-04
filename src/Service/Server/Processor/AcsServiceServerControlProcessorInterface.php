@@ -20,7 +20,7 @@
 
 declare(strict_types=1);
 
-namespace OAT\Library\Lti1p3Proctoring\Service\Server\Handler;
+namespace OAT\Library\Lti1p3Proctoring\Service\Server\Processor;
 
 use OAT\Library\Lti1p3Core\Registration\RegistrationInterface;
 use OAT\Library\Lti1p3Proctoring\Model\AcsControlInterface;
