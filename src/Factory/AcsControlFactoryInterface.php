@@ -22,9 +22,13 @@ declare(strict_types=1);
 
 namespace OAT\Library\Lti1p3Proctoring\Factory;
 
+use OAT\Library\Lti1p3Core\Exception\LtiExceptionInterface;
 use OAT\Library\Lti1p3Proctoring\Model\AcsControlInterface;
 
 interface AcsControlFactoryInterface
 {
+    /**
+     * @throws LtiExceptionInterface
+     */
     public function create(array $data): AcsControlInterface;
 }

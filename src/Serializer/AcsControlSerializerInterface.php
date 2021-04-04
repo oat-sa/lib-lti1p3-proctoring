@@ -22,11 +22,15 @@ declare(strict_types=1);
 
 namespace OAT\Library\Lti1p3Proctoring\Serializer;
 
+use OAT\Library\Lti1p3Core\Exception\LtiExceptionInterface;
 use OAT\Library\Lti1p3Proctoring\Model\AcsControlInterface;
 
 interface AcsControlSerializerInterface
 {
     public function serialize(AcsControlInterface $control): string;
 
+    /**
+     * @throws LtiExceptionInterface
+     */
     public function deserialize(string $data): AcsControlInterface;
 }
