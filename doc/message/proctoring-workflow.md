@@ -167,7 +167,7 @@ $message = $builder->buildStartAssessmentLaunchRequest(
     $registration,                                         // [required] related registration
     $payload->getProctoringStartAssessmentUrl(),           // [required] platform StartAssessment url as provided in StartProctoring message
     $payload->getProctoringSessionData(),                  // [required] session data as provided in StartProctoring message
-    $payload->getProctoringAttemptNumber(),                // [required] attempt number as provided n StartProctoring message
+    $payload->getProctoringAttemptNumber(),                // [required] attempt number as provided in StartProctoring message
     null,                                                  // [optional] will use the registration default deployment id, but you can pass a specific one
     ['myCustomClaim' => 'myCustomValue']                   // [optional] supplementary claims if needed
 );
