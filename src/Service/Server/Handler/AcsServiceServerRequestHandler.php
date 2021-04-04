@@ -87,8 +87,10 @@ class AcsServiceServerRequestHandler implements LtiServiceServerRequestHandlerIn
         ];
     }
 
-    public function handleServiceRequest(RegistrationInterface $registration, ServerRequestInterface $request): ResponseInterface
-    {
+    public function handleServiceRequest(
+        RegistrationInterface $registration,
+        ServerRequestInterface $request
+    ): ResponseInterface {
         $controlResult = $this->processor->process(
             $registration,
             $this->controlSerializer->deserialize($request->getBody()->__toString())
