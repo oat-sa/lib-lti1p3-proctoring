@@ -12,14 +12,14 @@ Each step will be detailed below, from both platform and tool perspectives.
 
 ## Table of contents
 
-- [1 - Platform side: StartProctoring message request generation](#1---platform-side-startproctoring-message-request-generation)
+- [1 - Platform side: StartProctoring message generation](#1---platform-side-startproctoring-message-generation)
 - [2 - Tool side: StartProctoring message handling](#2---tool-side-startproctoring-message-handling)
 - [3 - Tool side: StartAssessment message generation](#3---tool-side-startassessment-message-generation)
 - [4 - Platform side: StartAssessment message handling](#4---platform-side-startassessment-message-handling)
 
-## 1 - Platform side: StartProctoring message request generation
+## 1 - Platform side: StartProctoring message generation
 
-You can find below required steps to generate a StartProctoring request message, needed only if you're acting as a platform.
+You can find below required steps to generate a StartProctoring message, needed only if you're acting as a platform.
 
 ### Create the message
 
@@ -88,7 +88,7 @@ The underlying core library offers everything you need to securely implement thi
 
 ## 2 - Tool side: StartProctoring message handling
 
-You can find below required steps to handle a StartProctoring request message, needed only if you're acting as a tool.
+You can find below required steps to handle a StartProctoring message, needed only if you're acting as a tool.
 
 ### Validate the message 
 
@@ -135,7 +135,7 @@ The library will take care of the rest of the process, when the tool will redire
 
 ## 3 - Tool side: StartAssessment message generation
 
-You can find below required steps to generate a StartAssessment request message to return to the platform, needed only if you're acting as a tool.
+You can find below required steps to generate a StartAssessment message to return to the platform, needed only if you're acting as a tool.
 
 ### Create the message
 
