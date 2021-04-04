@@ -23,6 +23,7 @@ declare(strict_types=1);
 namespace OAT\Library\Lti1p3Proctoring\Model;
 
 use DateTimeInterface;
+use InvalidArgumentException;
 use JsonSerializable;
 use OAT\Library\Lti1p3Core\Resource\LtiResourceLink\LtiResourceLinkInterface;
 
@@ -55,6 +56,9 @@ interface AcsControlInterface extends JsonSerializable
 
     public function getAction(): string;
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function setAction(string $action): AcsControlInterface;
 
     public function getIncidentTime(): DateTimeInterface;

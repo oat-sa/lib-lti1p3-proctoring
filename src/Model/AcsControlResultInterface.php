@@ -22,6 +22,7 @@ declare(strict_types=1);
 
 namespace OAT\Library\Lti1p3Proctoring\Model;
 
+use InvalidArgumentException;
 use JsonSerializable;
 
 /**
@@ -45,6 +46,9 @@ interface AcsControlResultInterface extends JsonSerializable
 
     public function getStatus(): string;
 
+    /**
+     * @throws InvalidArgumentException
+     */
     public function setStatus(string $status): AcsControlResultInterface;
 
     public function getExtraTime(): ?int;
