@@ -22,8 +22,10 @@ declare(strict_types=1);
 
 namespace OAT\Library\Lti1p3Proctoring\Service\Client;
 
+use InvalidArgumentException;
 use OAT\Library\Lti1p3Core\Exception\LtiException;
 use OAT\Library\Lti1p3Core\Exception\LtiExceptionInterface;
+use OAT\Library\Lti1p3Core\Message\Payload\LtiMessagePayloadInterface;
 use OAT\Library\Lti1p3Core\Registration\RegistrationInterface;
 use OAT\Library\Lti1p3Core\Service\Client\LtiServiceClient;
 use OAT\Library\Lti1p3Core\Service\Client\LtiServiceClientInterface;
@@ -63,6 +65,39 @@ class AcsServiceClient implements AcsServiceInterface
     /**
      * @throws LtiExceptionInterface
      */
+    public function sendControlForPayload(
+        RegistrationInterface $registration,
+        LtiMessagePayloadInterface $payload,
+        AcsControlInterface $control
+    ): AcsControlResultInterface {
+        try {
+            $acsClaim = $payload->getAcs();
+
+            if (null === $acsClaim) {
+                throw new InvalidArgumentException('Provided payload does not contain ACS claim');
+            }
+
+            if (!in_array($control->getAction(), $acsClaim->getActions())) {
+                throw new InvalidArgumentException('Provided control action not allowed from ACS claim');
+            }
+
+            return $this->sendControl(
+                $registration,
+                $control,
+                $acsClaim->getAssessmentControlUrl()
+            );
+        } catch (Throwable $exception) {
+            throw new LtiException(
+                sprintf('Cannot send ACS control for payload: %s', $exception->getMessage()),
+                $exception->getCode(),
+                $exception
+            );
+        }
+    }
+
+    /**
+     * @throws LtiExceptionInterface
+     */
     public function sendControl(
         RegistrationInterface $registration,
         AcsControlInterface $control,
@@ -87,8 +122,6 @@ class AcsServiceClient implements AcsServiceInterface
             );
 
             return $this->controlResultSerializer->deserialize($response->getBody()->__toString());
-        } catch (LtiExceptionInterface $exception) {
-            throw $exception;
         } catch (Throwable $exception) {
             throw new LtiException(
                 sprintf('Cannot send ACS control: %s', $exception->getMessage()),
