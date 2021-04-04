@@ -38,7 +38,12 @@ You can then find below usage tutorials, presented by topics.
 
 ### Messages
 
-- how to [implement the proctoring workflow (for platform and / or tool)](doc/proctoring-workflow.md)
+- how to [implement the proctoring workflow (for platform and / or tool)](doc/message/proctoring-workflow.md)
+
+### Service
+
+- how to [use the library for ACS as a tool](doc/service/tool.md)
+- how to [use the library for ACS as a platform](doc/service/platform.md)
 
 ## Tests
 
