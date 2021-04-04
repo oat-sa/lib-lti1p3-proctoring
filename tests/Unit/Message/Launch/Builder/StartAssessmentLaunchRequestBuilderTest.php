@@ -59,7 +59,8 @@ class StartAssessmentLaunchRequestBuilderTest extends TestCase
             $resourceLinkClaim,
             $this->registration,
             'http://platform.com/start-assessment-url',
-            'data'
+            'data',
+            1
         );
 
         $this->assertInstanceOf(LtiMessageInterface::class, $result);
@@ -114,7 +115,8 @@ class StartAssessmentLaunchRequestBuilderTest extends TestCase
             $resourceLinkClaimMock,
             $this->registration,
             'http://platform.com/start-assessment-url',
-            'data'
+            'data',
+            1
         );
     }
 

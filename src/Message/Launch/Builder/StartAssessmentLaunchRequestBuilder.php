@@ -45,7 +45,7 @@ class StartAssessmentLaunchRequestBuilder extends ToolOriginatingLaunchBuilder
         RegistrationInterface $registration,
         string $startAssessmentUrl,
         string $sessionData,
-        int $attemptNumber = 1,
+        int $attemptNumber,
         string $deploymentId = null,
         array $optionalClaims = []
     ): LtiMessageInterface {
