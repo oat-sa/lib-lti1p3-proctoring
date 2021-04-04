@@ -42,7 +42,7 @@ class ProctoringMessageFlowTest extends TestCase
     use DomainTestingTrait;
     use NetworkTestingTrait;
 
-    public function testDeepLinkingFlow(): void
+    public function testProctoringFlow(): void
     {
         // Step 0 - Dependencies preparation
 

@@ -46,7 +46,7 @@ $builder = new StartProctoringLaunchRequestBuilder();
 /** @var RegistrationRepositoryInterface $registrationRepository */
 $registration = $registrationRepository->find(...);
 
-// Build a deep linking request launch message
+// Build StartProctoring message
 $message = $builder->buildStartProctoringLaunchRequest(
     $resourceLink,                                                 // [required] resource link
     $registration,                                                 // [required] related registration
@@ -82,7 +82,7 @@ echo $message->toHtmlRedirectForm();   // HTML hidden form, with possibility of 
 
 ### Implement OpenId Connect launch flow
 
-Like any platform originating message, when the deep linking request message is launched, an [OIDC flow](https://www.imsglobal.org/spec/security/v1p0/#platform-originating-messages) will start between the tool and the platform.
+Like any platform originating message, when the StartProctoring message is launched, an [OIDC flow](https://www.imsglobal.org/spec/security/v1p0/#platform-originating-messages) will start between the tool and the platform.
 
 The underlying core library offers everything you need to securely implement this flow, as documented in the [platform originating messages documentation](https://github.com/oat-sa/lib-lti1p3-core/blob/master/doc/message/platform-originating-messages.md).
 
@@ -229,7 +229,7 @@ The [PlatformLaunchValidator](https://github.com/oat-sa/lib-lti1p3-core/blob/mas
 
 - it requires a registration repository and a nonce repository implementations [as explained here](https://github.com/oat-sa/lib-lti1p3-core/blob/master/doc/quickstart/interfaces.md)
 - it expects a [PSR7 ServerRequestInterface](https://www.php-fig.org/psr/psr-7/#321-psrhttpmessageserverrequestinterface) to validate
-- it will output a [LaunchValidationResult](https://github.com/oat-sa/lib-lti1p3-core/blob/master/src/Message/Launch/Validator/Result/LaunchValidationResult.php) representing the launch validation, the related registration and the deep linking response payload itself.
+- it will output a [LaunchValidationResult](https://github.com/oat-sa/lib-lti1p3-core/blob/master/src/Message/Launch/Validator/Result/LaunchValidationResult.php) representing the launch validation, the related registration and the StartAssessment payload itself.
 
 ```php
 <?php
