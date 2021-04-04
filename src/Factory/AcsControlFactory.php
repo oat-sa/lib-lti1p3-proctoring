@@ -78,7 +78,7 @@ class AcsControlFactory implements AcsControlFactoryInterface
 
             $action = $data['action'] ?? null;
 
-            if (!in_array($action, AcsControlInterface::SUPPORTED_ACTIONS)) {
+            if (null === $action || !in_array($action, AcsControlInterface::SUPPORTED_ACTIONS)) {
                 throw new InvalidArgumentException('Invalid action');
             }
 

@@ -156,6 +156,97 @@ class StartAssessmentLaunchRequestBuilderTest extends TestCase
         $this->assertEquals(1, $payload->getProctoringAttemptNumber());
     }
 
+    public function testBuildStartAssessmentLaunchRequestFromPayloadFailureOnMissingResourceLink(): void
+    {
+        $this->expectException(LtiExceptionInterface::class);
+        $this->expectExceptionMessage('Missing resource link claim from payload');
+
+        $token = $this->buildJwt(
+            [],
+            [],
+            $this->registration->getPlatformKeyChain()->getPrivateKey()
+        );
+
+        $payload = new LtiMessagePayload($token);
+
+        $this->subject->buildStartAssessmentLaunchRequestFromPayload(
+            $payload,
+            $this->registration
+        );
+    }
+
+    public function testBuildStartAssessmentLaunchRequestFromPayloadFailureOnMissingStartAssessmentUrl(): void
+    {
+        $this->expectException(LtiExceptionInterface::class);
+        $this->expectExceptionMessage('Missing start assessment url claim from payload');
+
+        $resourceLinkClaim = new ResourceLinkClaim('resourceLinkIdentifier');
+
+        $token = $this->buildJwt(
+            [],
+            [
+                $resourceLinkClaim::getClaimName() => $resourceLinkClaim->normalize(),
+            ],
+            $this->registration->getPlatformKeyChain()->getPrivateKey()
+        );
+
+        $payload = new LtiMessagePayload($token);
+
+        $this->subject->buildStartAssessmentLaunchRequestFromPayload(
+            $payload,
+            $this->registration
+        );
+    }
+
+    public function testBuildStartAssessmentLaunchRequestFromPayloadFailureOnMissingSessionData(): void
+    {
+        $this->expectException(LtiExceptionInterface::class);
+        $this->expectExceptionMessage('Missing session data claim from payload');
+
+        $resourceLinkClaim = new ResourceLinkClaim('resourceLinkIdentifier');
+
+        $token = $this->buildJwt(
+            [],
+            [
+                $resourceLinkClaim::getClaimName() => $resourceLinkClaim->normalize(),
+                LtiMessagePayloadInterface::CLAIM_LTI_PROCTORING_START_ASSESSMENT_URL => 'http://platform.com/start-assessment-url',
+            ],
+            $this->registration->getPlatformKeyChain()->getPrivateKey()
+        );
+
+        $payload = new LtiMessagePayload($token);
+
+        $this->subject->buildStartAssessmentLaunchRequestFromPayload(
+            $payload,
+            $this->registration
+        );
+    }
+
+    public function testBuildStartAssessmentLaunchRequestFromPayloadFailureOnMissingAttemptNumber(): void
+    {
+        $this->expectException(LtiExceptionInterface::class);
+        $this->expectExceptionMessage('Missing attempt number claim from payload');
+
+        $resourceLinkClaim = new ResourceLinkClaim('resourceLinkIdentifier');
+
+        $token = $this->buildJwt(
+            [],
+            [
+                $resourceLinkClaim::getClaimName() => $resourceLinkClaim->normalize(),
+                LtiMessagePayloadInterface::CLAIM_LTI_PROCTORING_START_ASSESSMENT_URL => 'http://platform.com/start-assessment-url',
+                LtiMessagePayloadInterface::CLAIM_LTI_PROCTORING_SESSION_DATA => 'data',
+            ],
+            $this->registration->getPlatformKeyChain()->getPrivateKey()
+        );
+
+        $payload = new LtiMessagePayload($token);
+
+        $this->subject->buildStartAssessmentLaunchRequestFromPayload(
+            $payload,
+            $this->registration
+        );
+    }
+
     public function testBuildStartAssessmentLaunchRequestFromPayloadFailureOnInvalidDeploymentId(): void
     {
         $this->expectException(LtiExceptionInterface::class);

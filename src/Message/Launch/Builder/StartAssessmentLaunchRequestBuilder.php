@@ -22,6 +22,7 @@ declare(strict_types=1);
 
 namespace OAT\Library\Lti1p3Proctoring\Message\Launch\Builder;
 
+use InvalidArgumentException;
 use OAT\Library\Lti1p3Core\Exception\LtiException;
 use OAT\Library\Lti1p3Core\Exception\LtiExceptionInterface;
 use OAT\Library\Lti1p3Core\Message\Launch\Builder\ToolOriginatingLaunchBuilder;
@@ -84,12 +85,36 @@ class StartAssessmentLaunchRequestBuilder extends ToolOriginatingLaunchBuilder
     ): LtiMessageInterface {
         try {
 
+            $resourceLink = $payload->getResourceLink();
+
+            if (null === $resourceLink) {
+                throw new InvalidArgumentException('Missing resource link claim from payload');
+            }
+
+            $startAssessmentUrl = $payload->getProctoringStartAssessmentUrl();
+
+            if (null === $startAssessmentUrl) {
+                throw new InvalidArgumentException('Missing start assessment url claim from payload');
+            }
+
+            $sessionData = $payload->getProctoringSessionData();
+
+            if (null === $sessionData) {
+                throw new InvalidArgumentException('Missing session data claim from payload');
+            }
+
+            $attemptNumber = $payload->getProctoringAttemptNumber();
+
+            if (null === $attemptNumber) {
+                throw new InvalidArgumentException('Missing attempt number claim from payload');
+            }
+
             return $this->buildStartAssessmentLaunchRequest(
-                $payload->getResourceLink(),
+                $resourceLink,
                 $registration,
-                $payload->getProctoringStartAssessmentUrl(),
-                $payload->getProctoringSessionData(),
-                $payload->getProctoringAttemptNumber(),
+                $startAssessmentUrl,
+                $sessionData,
+                $attemptNumber,
                 $deploymentId,
                 $optionalClaims
             );

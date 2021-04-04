@@ -36,7 +36,7 @@ class AcsControlResultFactory implements AcsControlResultFactoryInterface
     {
         $status = $data['status'] ?? null;
 
-        if (!in_array($status, AcsControlResultInterface::SUPPORTED_STATUSES)) {
+        if (null === $status || !in_array($status, AcsControlResultInterface::SUPPORTED_STATUSES)) {
             throw new LtiException('Cannot create ACS control result: Invalid status');
         }
 
