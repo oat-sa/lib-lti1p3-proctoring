@@ -87,7 +87,9 @@ class StartProctoringLaunchRequestBuilderTest extends TestCase
 
         $ltiMessageHintToken = $this->parseJwt($result->getParameters()->getMandatory('lti_message_hint'));
 
-        $this->assertTrue($this->verifyJwt($ltiMessageHintToken, $this->registration->getPlatformKeyChain()->getPublicKey()));
+        $this->assertTrue(
+            $this->verifyJwt($ltiMessageHintToken, $this->registration->getPlatformKeyChain()->getPublicKey())
+        );
 
         $payload = new LtiMessagePayload($ltiMessageHintToken);
 
