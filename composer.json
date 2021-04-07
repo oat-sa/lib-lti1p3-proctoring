@@ -1,5 +1,5 @@
 {
-    "name": "oat-sa/lib-lti1p3-procotring",
+    "name": "oat-sa/lib-lti1p3-proctoring",
     "description": "OAT LTI 1.3 Proctoring Library",
     "type": "library",
     "license": "GPL-2.0-only",

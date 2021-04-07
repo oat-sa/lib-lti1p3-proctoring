@@ -2,8 +2,8 @@
 
 [![Latest Version](https://img.shields.io/github/tag/oat-sa/lib-lti1p3-proctoring.svg?style=flat&label=release)](https://github.com/oat-sa/lib-lti1p3-proctoring/tags)
 [![License GPL2](http://img.shields.io/badge/licence-GPL%202.0-blue.svg)](http://www.gnu.org/licenses/gpl-2.0.html)
-[![Build Status](https://travis-ci.org/oat-sa/lib-lti1p3-proctoring.svg?branch=master)](https://travis-ci.org/oat-sa/lib-lti1p3-proctoring)
-[![Test Coverage Status](https://coveralls.io/repos/github/oat-sa/lib-lti1p3-proctoring/badge.svg?branch=master)](https://coveralls.io/github/oat-sa/lib-lti1p3-proctoring?branch=master)
+[![Build Status](https://travis-ci.org/oat-sa/lib-lti1p3-proctoring.svg?branch=main)](https://travis-ci.org/oat-sa/lib-lti1p3-proctoring)
+[![Test Coverage Status](https://coveralls.io/repos/github/oat-sa/lib-lti1p3-proctoring/badge.svg?branch=main)](https://coveralls.io/github/oat-sa/lib-lti1p3-proctoring?branch=main)
 [![Psalm Level Status](https://shepherd.dev/github/oat-sa/lib-lti1p3-proctoring/level.svg)](https://shepherd.dev/github/oat-sa/lib-lti1p3-proctoring)
 [![Packagist Downloads](http://img.shields.io/packagist/dt/oat-sa/lib-lti1p3-proctoring.svg)](https://packagist.org/packages/oat-sa/lib-lti1p3-proctoring)
 
@@ -40,7 +40,7 @@ You can then find below usage tutorials, presented by topics.
 
 - how to [implement the proctoring workflow (for platform and / or tool)](doc/message/proctoring-workflow.md)
 
-### Service
+### Services
 
 - how to [use the library for ACS as a tool](doc/service/tool.md)
 - how to [use the library for ACS as a platform](doc/service/platform.md)

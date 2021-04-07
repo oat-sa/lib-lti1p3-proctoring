@@ -127,11 +127,11 @@ if (!$result->hasError()) {
 
 ### Offer proctor validation
 
-When a StartProctoring message is received by a tool, the tool may offer various ways to the proctor to validate candidate attempt (webcam, etc)
+When a StartProctoring message is received by a tool, the tool may offer various ways to the proctor to validate candidate attempt (webcam, etc).
 
 Since this process can differ a lot between proctoring tool applications, this library **does not provide any tooling for this** (to leave you free to provide your own process or to delegate to external ones). 
 
-The library will take care of the rest of the process, when the tool will redirect the candidate to the platform..
+The library will take care of the rest of the process, when the tool will redirect the candidate to the platform.
 
 ## 3 - Tool side: StartAssessment message generation
 
