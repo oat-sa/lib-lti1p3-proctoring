@@ -48,7 +48,7 @@ $controlResult = $acsClient->sendControlForPayload(
 
 );
 
-// or you also can call directly for an given URL (avoid claim construction)
+// or you also can call directly for an given URL (avoid payload construction)
 /** @var AcsControlResultInterface $controlResult */
 $controlResult = $acsClient->sendControl(
     $registration,              // [required] as the tool, it will call the platform of this registration
