@@ -38,7 +38,7 @@ You can then find below usage tutorials, presented by topics.
 
 ### Messages
 
-- how to [implement the proctoring workflow (for platform and / or tool)](doc/message/proctoring-workflow.md)
+- how to [implement the proctoring messages workflow (for platform and / or tool)](doc/message/proctoring-workflow.md)
 
 ### Services
 

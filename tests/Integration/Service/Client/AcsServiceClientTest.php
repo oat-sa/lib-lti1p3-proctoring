@@ -246,7 +246,7 @@ class AcsServiceClientTest extends TestCase
             ->method('getAcs')
             ->willReturn($acsClaim);
 
-        $result = $this->subject->sendControlForPayload($registration, $payloadMock, $control);
+        $result = $this->subject->sendControlForPayload($registration, $control, $payloadMock);
 
         $this->assertInstanceOf(AcsControlResultInterface::class, $result);
         $this->assertEquals($controlResult, $result);
@@ -271,8 +271,8 @@ class AcsServiceClientTest extends TestCase
 
         $this->subject->sendControlForPayload(
             $registration,
-            $payloadMock,
-            $this->createMock(AcsControlInterface::class)
+            $this->createMock(AcsControlInterface::class),
+            $payloadMock
         );
     }
 
@@ -306,8 +306,8 @@ class AcsServiceClientTest extends TestCase
 
         $this->subject->sendControlForPayload(
             $registration,
-            $payloadMock,
-            $control
+            $control,
+            $payloadMock
         );
     }
 }
