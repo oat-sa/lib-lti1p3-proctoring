@@ -67,8 +67,8 @@ class AcsServiceClient implements AcsServiceInterface
      */
     public function sendControlForPayload(
         RegistrationInterface $registration,
-        LtiMessagePayloadInterface $payload,
-        AcsControlInterface $control
+        AcsControlInterface $control,
+        LtiMessagePayloadInterface $payload
     ): AcsControlResultInterface {
         try {
             $acsClaim = $payload->getAcs();

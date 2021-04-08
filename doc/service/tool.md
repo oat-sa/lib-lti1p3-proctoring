@@ -42,9 +42,10 @@ $control = new AcsControl(...);
 
 /** @var AcsControlResultInterface $controlResult */
 $controlResult = $acsClient->sendControlForPayload(
-    $registration, // [required] as the tool, it will call the platform of this registration
-    $payload,      // [required] from the LTI message payload containing the ACS claim (got at LTI launch)
-    $control       // [required] with provided ACS control
+    $registration,  // [required] as the tool, it will call the platform of this registration
+    $control,       // [required] with provided ACS control
+    $payload        // [required] from the LTI message payload containing the ACS claim (got at LTI launch)
+
 );
 
 // or you also can call directly for an given URL (avoid claim construction)
