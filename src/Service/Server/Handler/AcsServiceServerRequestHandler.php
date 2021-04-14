@@ -24,7 +24,6 @@ namespace OAT\Library\Lti1p3Proctoring\Service\Server\Handler;
 
 use Http\Message\ResponseFactory;
 use Nyholm\Psr7\Factory\HttplugFactory;
-use OAT\Library\Lti1p3Core\Registration\RegistrationInterface;
 use OAT\Library\Lti1p3Core\Security\OAuth2\Validator\Result\RequestAccessTokenValidationResultInterface;
 use OAT\Library\Lti1p3Core\Service\Server\Handler\LtiServiceServerRequestHandlerInterface;
 use OAT\Library\Lti1p3Proctoring\Serializer\AcsControlResultSerializer;
