@@ -99,7 +99,7 @@ You can use the [ToolLaunchValidator](https://github.com/oat-sa/lib-lti1p3-core/
 ```php
 <?php
 
-use OAT\Library\Lti1p3Core\Message\Launch\Validator\ToolLaunchValidator;
+use OAT\Library\Lti1p3Core\Message\Launch\Validator\Tool\ToolLaunchValidator;
 use OAT\Library\Lti1p3Core\Registration\RegistrationRepositoryInterface;
 use OAT\Library\Lti1p3Core\Security\Nonce\NonceRepositoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -144,11 +144,11 @@ Once the proctor's candidate attempt validation is done, you can return to the p
 ```php
 <?php
 
-use OAT\Library\Lti1p3Core\Message\Launch\Validator\Result\LaunchValidationResult;
+use OAT\Library\Lti1p3Core\Message\Launch\Validator\Result\LaunchValidationResultInterface;
 use OAT\Library\Lti1p3Core\Registration\RegistrationRepositoryInterface;
 use OAT\Library\Lti1p3Proctoring\Message\Launch\Builder\StartAssessmentLaunchRequestBuilder;
 
-/** @var LaunchValidationResult $result */
+/** @var LaunchValidationResultInterface $result */
 $result = $validator->validatePlatformOriginatingLaunch(...);
 
 // Create a builder instance
@@ -178,11 +178,11 @@ $message = $builder->buildStartAssessmentLaunchRequest(
 ```php
 <?php
 
-use OAT\Library\Lti1p3Core\Message\Launch\Validator\Result\LaunchValidationResult;
+use OAT\Library\Lti1p3Core\Message\Launch\Validator\Result\LaunchValidationResultInterface;
 use OAT\Library\Lti1p3Core\Registration\RegistrationRepositoryInterface;
 use OAT\Library\Lti1p3Proctoring\Message\Launch\Builder\StartAssessmentLaunchRequestBuilder;
 
-/** @var LaunchValidationResult $result */
+/** @var LaunchValidationResultInterface $result */
 $result = $validator->validatePlatformOriginatingLaunch(...);
 
 // Create a builder instance
@@ -234,7 +234,7 @@ The [PlatformLaunchValidator](https://github.com/oat-sa/lib-lti1p3-core/blob/mas
 ```php
 <?php
 
-use OAT\Library\Lti1p3Core\Message\Launch\Validator\PlatformLaunchValidator;
+use OAT\Library\Lti1p3Core\Message\Launch\Validator\Platform\PlatformLaunchValidator;
 use OAT\Library\Lti1p3Core\Registration\RegistrationRepositoryInterface;
 use OAT\Library\Lti1p3Core\Security\Nonce\NonceRepositoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
