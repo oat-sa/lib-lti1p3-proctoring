@@ -25,6 +25,7 @@ namespace OAT\Library\Lti1p3Proctoring\Service\Server\Handler;
 use Http\Message\ResponseFactory;
 use Nyholm\Psr7\Factory\HttplugFactory;
 use OAT\Library\Lti1p3Core\Registration\RegistrationInterface;
+use OAT\Library\Lti1p3Core\Security\OAuth2\Validator\Result\RequestAccessTokenValidationResultInterface;
 use OAT\Library\Lti1p3Core\Service\Server\Handler\LtiServiceServerRequestHandlerInterface;
 use OAT\Library\Lti1p3Proctoring\Serializer\AcsControlResultSerializer;
 use OAT\Library\Lti1p3Proctoring\Serializer\AcsControlResultSerializerInterface;
@@ -88,10 +89,13 @@ class AcsServiceServerRequestHandler implements LtiServiceServerRequestHandlerIn
         ];
     }
 
-    public function handleServiceRequest(
-        RegistrationInterface $registration,
-        ServerRequestInterface $request
+    public function handleValidatedServiceRequest(
+        RequestAccessTokenValidationResultInterface $validationResult,
+        ServerRequestInterface $request,
+        array $options = []
     ): ResponseInterface {
+        $registration = $validationResult->getRegistration();
+
         $controlResult = $this->processor->process(
             $registration,
             $this->controlSerializer->deserialize($request->getBody()->__toString())
