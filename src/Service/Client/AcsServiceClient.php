@@ -113,7 +113,9 @@ class AcsServiceClient implements AcsServiceInterface
                 'POST',
                 $acsUrl,
                 [
-                    'headers' => ['Accept' => static::CONTENT_TYPE_CONTROL],
+                    'headers' => [
+                        'Content-Type' => static::CONTENT_TYPE_CONTROL,
+                    ],
                     'body' => $this->controlSerializer->serialize($control),
                 ],
                 [

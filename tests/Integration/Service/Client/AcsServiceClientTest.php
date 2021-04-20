@@ -97,7 +97,7 @@ class AcsServiceClientTest extends TestCase
                 'http://platform.com/acs',
                 [
                     'headers' => [
-                        'Accept' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
+                        'Content-Type' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
                     ],
                     'body' => $this->controlSerializer->serialize($control),
                 ],
@@ -142,7 +142,7 @@ class AcsServiceClientTest extends TestCase
                 'http://platform.com/acs',
                 [
                     'headers' => [
-                        'Accept' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
+                        'Content-Type' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
                     ],
                     'body' => $this->controlSerializer->serialize($controlCloneWithIssuer),
                 ],
@@ -185,7 +185,7 @@ class AcsServiceClientTest extends TestCase
                 'http://platform.com/acs',
                 [
                     'headers' => [
-                        'Accept' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
+                        'Content-Type' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
                     ],
                     'body' => $this->controlSerializer->serialize($control),
                 ],
@@ -226,7 +226,7 @@ class AcsServiceClientTest extends TestCase
                 'http://platform.com/acs',
                 [
                     'headers' => [
-                        'Accept' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
+                        'Content-Type' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
                     ],
                     'body' => $this->controlSerializer->serialize($control),
                 ],
