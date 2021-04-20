@@ -115,7 +115,7 @@ class AcsServiceServerRequestHandlerTest extends TestCase
             'POST',
             'http://platform.com/acs',
             [
-                'Accept' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
+                'Content-Type' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
             ],
             $this->controlSerializer->serialize($control)
         );
@@ -153,7 +153,7 @@ class AcsServiceServerRequestHandlerTest extends TestCase
             'GET',
             'http://platform.com/acs',
             [
-                'Accept' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
+                'Content-Type' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
             ]
         );
 
@@ -174,7 +174,7 @@ class AcsServiceServerRequestHandlerTest extends TestCase
             'POST',
             'http://platform.com/acs',
             [
-                'Accept' => 'invalid'
+                'Content-Type' => 'invalid'
             ]
         );
 
@@ -201,7 +201,7 @@ class AcsServiceServerRequestHandlerTest extends TestCase
             'POST',
             'http://platform.com/acs',
             [
-                'Accept' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
+                'Content-Type' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
             ]
         );
 
@@ -238,7 +238,7 @@ class AcsServiceServerRequestHandlerTest extends TestCase
             'POST',
             'http://platform.com/acs',
             [
-                'Accept' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
+                'Content-Type' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
             ],
             $this->controlSerializer->serialize($control)
         );
