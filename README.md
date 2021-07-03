@@ -52,7 +52,7 @@ You can find below the library documentation, presented by topics.
 
 ### Messages
 
-- how to [implement the proctoring messages workflow (for platform and / or tool)](doc/message/proctoring-workflow.md)
+- how to [implement the proctoring messages workflow (as platform and / or tool)](doc/message/proctoring-workflow.md)
 
 ### Services
 
