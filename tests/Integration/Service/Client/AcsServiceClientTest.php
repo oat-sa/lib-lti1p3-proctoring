@@ -252,6 +252,52 @@ class AcsServiceClientTest extends TestCase
         $this->assertEquals($controlResult, $result);
     }
 
+    public function testSendControlForClaimSuccess(): void
+    {
+        $registration = $this->createTestRegistration();
+
+        $control = new AcsControl(
+            new LtiResourceLink('resourceLinkIdentifier'),
+            'userIdentifier',
+            AcsControlInterface::ACTION_UPDATE,
+            Carbon::now(),
+            1,
+            'http://platform.com'
+        );
+
+        $controlResult = new AcsControlResult(
+            AcsControlResultInterface::STATUS_RUNNING
+        );
+
+        $this->clientMock
+            ->expects($this->once())
+            ->method('request')
+            ->with(
+                $registration,
+                'POST',
+                'http://platform.com/acs',
+                [
+                    'headers' => [
+                        'Content-Type' => AcsServiceInterface::CONTENT_TYPE_CONTROL,
+                    ],
+                    'body' => $this->controlSerializer->serialize($control),
+                ],
+                [
+                    AcsServiceInterface::AUTHORIZATION_SCOPE_CONTROL,
+                ]
+            )
+            ->willReturn(
+                $this->createResponse($this->controlResultSerializer->serialize($controlResult))
+            );
+
+        $acsClaim = new AcsClaim([AcsControlInterface::ACTION_UPDATE], 'http://platform.com/acs');
+
+        $result = $this->subject->sendControlForClaim($registration, $control, $acsClaim);
+
+        $this->assertInstanceOf(AcsControlResultInterface::class, $result);
+        $this->assertEquals($controlResult, $result);
+    }
+
     public function testSendControlForPayloadFailureOnMissingAcsClaim(): void
     {
         $this->expectException(LtiExceptionInterface::class);
@@ -276,7 +322,7 @@ class AcsServiceClientTest extends TestCase
         );
     }
 
-    public function testSendControlForPayloadFailureOnInvalidAcsAction(): void
+    public function testSendControlForClaimFailureOnInvalidAcsAction(): void
     {
         $this->expectException(LtiExceptionInterface::class);
         $this->expectExceptionMessage('Cannot send ACS control for payload: Provided control action not allowed from ACS claim');
@@ -298,16 +344,10 @@ class AcsServiceClientTest extends TestCase
 
         $acsClaim = new AcsClaim([AcsControlInterface::ACTION_PAUSE], 'http://platform.com/acs');
 
-        $payloadMock = $this->createMock(LtiMessagePayloadInterface::class);
-        $payloadMock
-            ->expects($this->once())
-            ->method('getAcs')
-            ->willReturn($acsClaim);
-
-        $this->subject->sendControlForPayload(
+        $this->subject->sendControlForClaim(
             $registration,
             $control,
-            $payloadMock
+            $acsClaim
         );
     }
 }

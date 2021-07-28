@@ -25,6 +25,7 @@ namespace OAT\Library\Lti1p3Proctoring\Service\Client;
 use InvalidArgumentException;
 use OAT\Library\Lti1p3Core\Exception\LtiException;
 use OAT\Library\Lti1p3Core\Exception\LtiExceptionInterface;
+use OAT\Library\Lti1p3Core\Message\Payload\Claim\AcsClaim;
 use OAT\Library\Lti1p3Core\Message\Payload\LtiMessagePayloadInterface;
 use OAT\Library\Lti1p3Core\Registration\RegistrationInterface;
 use OAT\Library\Lti1p3Core\Service\Client\LtiServiceClient;
@@ -71,20 +72,43 @@ class AcsServiceClient implements AcsServiceInterface
         LtiMessagePayloadInterface $payload
     ): AcsControlResultInterface {
         try {
-            $acsClaim = $payload->getAcs();
+            $claim = $payload->getAcs();
 
-            if (null === $acsClaim) {
+            if (null === $claim) {
                 throw new InvalidArgumentException('Provided payload does not contain ACS claim');
             }
 
-            if (!in_array($control->getAction(), $acsClaim->getActions())) {
+            return $this->sendControlForClaim(
+                $registration,
+                $control,
+                $claim
+            );
+        } catch (Throwable $exception) {
+            throw new LtiException(
+                sprintf('Cannot send ACS control for payload: %s', $exception->getMessage()),
+                $exception->getCode(),
+                $exception
+            );
+        }
+    }
+
+    /**
+     * @throws LtiExceptionInterface
+     */
+    public function sendControlForClaim(
+        RegistrationInterface $registration,
+        AcsControlInterface $control,
+        AcsClaim $claim
+    ): AcsControlResultInterface {
+        try {
+            if (!in_array($control->getAction(), $claim->getActions())) {
                 throw new InvalidArgumentException('Provided control action not allowed from ACS claim');
             }
 
             return $this->sendControl(
                 $registration,
                 $control,
-                $acsClaim->getAssessmentControlUrl()
+                $claim->getAssessmentControlUrl()
             );
         } catch (Throwable $exception) {
             throw new LtiException(
