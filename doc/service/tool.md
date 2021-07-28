@@ -11,13 +11,9 @@
 
 This library provides a [AcsServiceClient](../../src/Service/Client/AcsServiceClient.php) (based on the [core LtiServiceClient](https://github.com/oat-sa/lib-lti1p3-core/blob/master/doc/service/service-client.md)) that allow sending ACS controls to a platform.
 
-You can use:
-- `sendControlForPayload()` to [send ACS control](https://www.imsglobal.org/spec/proctoring/v1p0#h.awao2i3cnvsy) from a received LTI message payload
-- `sendControl()` to [send ACS control](https://www.imsglobal.org/spec/proctoring/v1p0#h.awao2i3cnvsy) for a given ACS service url
-
 ## Usage
 
-To send an ACS control:
+### Send an ACS control
 
 ```php
 <?php
@@ -48,7 +44,15 @@ $controlResult = $acsClient->sendControlForPayload(
 
 );
 
-// or you also can call directly for an given URL (avoid payload construction)
+// you also can send a control for an ACS claim
+$controlResult = $acsClient->sendControlForClaim(
+    $registration,         // [required] as the tool, it will call the platform of this registration
+    $control,              // [required] with provided ACS control
+    $payload->getAcs()     // [required] from the ACS claim (got at LTI launch)
+
+);
+
+// or you also can send a control to an given URL
 /** @var AcsControlResultInterface $controlResult */
 $controlResult = $acsClient->sendControl(
     $registration,              // [required] as the tool, it will call the platform of this registration

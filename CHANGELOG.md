@@ -1,6 +1,12 @@
 CHANGELOG
 =========
 
+0.3.0
+-----
+
+* Added method to the AcsServiceClient to work with claim
+* Updated documentation
+
 0.2.0
 -----
 
