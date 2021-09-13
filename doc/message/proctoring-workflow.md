@@ -6,7 +6,7 @@
 
 You can find below a proctoring messages workflow diagram, with steps numbers:
 
-![Proctoring Workflow](../images/proctoring-workflow.png)
+![Proctoring Workflow](../images/proctoring-workflow-complete.png)
 
 Each step will be detailed below, from both platform and tool perspectives.
 
