@@ -6,7 +6,7 @@
     "require": {
         "php": ">=7.2.0",
         "ext-json": "*",
-        "oat-sa/lib-lti1p3-core": "^6.0"
+        "oat-sa/lib-lti1p3-core": "^6.1"
     },
     "require-dev": {
         "cache/array-adapter": "^1.1",
