@@ -16,7 +16,7 @@ Each step will be detailed below, from both platform and tool perspectives.
 - [2 - Tool side: StartProctoring message handling](#2---tool-side-startproctoring-message-handling)
 - [3 - Tool side: StartAssessment message generation](#3---tool-side-startassessment-message-generation)
 - [4 - Platform side: StartAssessment message handling](#4---platform-side-startassessment-message-handling)
-- [5 - Platform side: EndAssessment message generation](#5---platform-side-startproctoring-message-generation)
+- [5 - Platform side: EndAssessment message generation](#5---platform-side-endassessment-message-generation)
 - [6 - Tool side: EndAssessment message handling](#6---tool-side-endassessment-message-handling)
 
 ## 1 - Platform side: StartProctoring message generation
