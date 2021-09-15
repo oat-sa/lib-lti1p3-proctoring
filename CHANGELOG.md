@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+0.4.0
+-----
+
+* Added EndAssessment launch message builder
+* Updated StartAssessment launch message builder for end_assessment_return claim handling
+* Updated documentation
+
 0.3.0
 -----
 

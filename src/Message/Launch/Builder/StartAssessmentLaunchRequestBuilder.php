@@ -47,13 +47,15 @@ class StartAssessmentLaunchRequestBuilder extends ToolOriginatingLaunchBuilder
         string $sessionData,
         int $attemptNumber,
         string $deploymentId = null,
-        array $optionalClaims = []
+        array $optionalClaims = [],
+        bool $endAssessmentReturn = false
     ): LtiMessageInterface {
         try {
             $this->builder
                 ->withClaim($resourceLinkClaim)
                 ->withClaim(LtiMessagePayloadInterface::CLAIM_LTI_PROCTORING_SESSION_DATA, $sessionData)
-                ->withClaim(LtiMessagePayloadInterface::CLAIM_LTI_PROCTORING_ATTEMPT_NUMBER, $attemptNumber);
+                ->withClaim(LtiMessagePayloadInterface::CLAIM_LTI_PROCTORING_ATTEMPT_NUMBER, $attemptNumber)
+                ->withClaim(LtiMessagePayloadInterface::CLAIM_LTI_PROCTORING_END_ASSESSMENT_RETURN, $endAssessmentReturn);
 
             return $this->buildToolOriginatingLaunch(
                 $registration,
@@ -81,7 +83,8 @@ class StartAssessmentLaunchRequestBuilder extends ToolOriginatingLaunchBuilder
         LtiMessagePayloadInterface $payload,
         RegistrationInterface $registration,
         string $deploymentId = null,
-        array $optionalClaims = []
+        array $optionalClaims = [],
+        bool $endAssessmentReturn = false
     ): LtiMessageInterface {
         try {
 
@@ -116,7 +119,8 @@ class StartAssessmentLaunchRequestBuilder extends ToolOriginatingLaunchBuilder
                 $sessionData,
                 $attemptNumber,
                 $deploymentId,
-                $optionalClaims
+                $optionalClaims,
+                $endAssessmentReturn
             );
 
         } catch (LtiExceptionInterface $exception) {
