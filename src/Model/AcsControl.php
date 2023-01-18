@@ -237,7 +237,8 @@ class AcsControl implements AcsControlInterface
                 'incident_severity' => $this->incidentSeverity,
                 'reason_code' => $this->reasonCode,
                 'reason_msg' => $this->reasonMessage,
-            ]
+            ],
+            static fn($element) => $element !== null
         );
     }
 }
