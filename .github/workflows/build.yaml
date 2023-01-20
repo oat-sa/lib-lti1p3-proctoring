@@ -9,7 +9,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: [7.2, 7.3, 7.4]
+        php: [7.4]
         coverage: ["true"]
         include:
         - php: 8.0
@@ -39,7 +39,7 @@ jobs:
     - name: Psalm
       run: |
         ./vendor/bin/psalm --shepherd
-    
+
     - name: Coveralls
       if: ${{ matrix.coverage == 'true' }}
       env:
