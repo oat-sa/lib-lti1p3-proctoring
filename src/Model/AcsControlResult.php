@@ -79,7 +79,8 @@ class AcsControlResult implements AcsControlResultInterface
             [
                 'status' => $this->status,
                 'extra_time' => $this->extraTime,
-            ]
+            ],
+            static fn($element) => $element !== null
         );
     }
 }

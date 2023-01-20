@@ -80,6 +80,86 @@ class AcsControlFactoryTest extends TestCase
         $this->assertEquals('message', $result->getReasonMessage());
     }
 
+    public function testCreateSuccessWithZeroExtraTimeAndIncidentSeverity(): void
+    {
+        $date = Carbon::now();
+
+        $result = $this->subject->create(
+            [
+                'user' => [
+                    'iss' => 'issuerIdentifier',
+                    'sub' => 'userIdentifier',
+                ],
+                'resource_link' => [
+                    'id' => 'resourceLinkIdentifier',
+                    'title' => 'resourceLinkTitle',
+                    'description' => 'resourceLinkDescription',
+                ],
+                'attempt_number' => 1,
+                'action' => AcsControlInterface::ACTION_UPDATE,
+                'extra_time' => 0,
+                'incident_time' => $date->format(DATE_ATOM),
+                'incident_severity' => 0,
+                'reason_code' => 'code',
+                'reason_msg' => 'message',
+            ]
+        );
+
+        $this->assertInstanceOf(AcsControlInterface::class, $result);
+
+        $this->assertEquals('resourceLinkIdentifier', $result->getResourceLink()->getIdentifier());
+        $this->assertEquals('resourceLinkTitle', $result->getResourceLink()->getTitle());
+        $this->assertEquals('resourceLinkDescription', $result->getResourceLink()->getText());
+        $this->assertEquals('issuerIdentifier', $result->getIssuerIdentifier());
+        $this->assertEquals('userIdentifier', $result->getUserIdentifier());
+        $this->assertEquals(1, $result->getAttemptNumber());
+        $this->assertEquals(AcsControlInterface::ACTION_UPDATE, $result->getAction());
+        $this->assertEquals(0, $result->getExtraTime());
+        $this->assertEquals($date->format(DATE_ATOM), $result->getIncidentTime()->format(DATE_ATOM));
+        $this->assertEquals(0, $result->getIncidentSeverity());
+        $this->assertEquals('code', $result->getReasonCode());
+        $this->assertEquals('message', $result->getReasonMessage());
+    }
+
+    public function testCreateSuccessWithoutExtraTimeAndIncidentSeverity(): void
+    {
+        $date = Carbon::now();
+
+        $result = $this->subject->create(
+            [
+                'user' => [
+                    'iss' => 'issuerIdentifier',
+                    'sub' => 'userIdentifier',
+                ],
+                'resource_link' => [
+                    'id' => 'resourceLinkIdentifier',
+                    'title' => 'resourceLinkTitle',
+                    'description' => 'resourceLinkDescription',
+                ],
+                'attempt_number' => 1,
+                'action' => AcsControlInterface::ACTION_UPDATE,
+                'incident_time' => $date->format(DATE_ATOM),
+                'reason_code' => 'code',
+                'reason_msg' => 'message',
+            ]
+        );
+
+        $this->assertInstanceOf(AcsControlInterface::class, $result);
+
+        $this->assertEquals('resourceLinkIdentifier', $result->getResourceLink()->getIdentifier());
+        $this->assertEquals('resourceLinkTitle', $result->getResourceLink()->getTitle());
+        $this->assertEquals('resourceLinkDescription', $result->getResourceLink()->getText());
+        $this->assertEquals('issuerIdentifier', $result->getIssuerIdentifier());
+        $this->assertEquals('userIdentifier', $result->getUserIdentifier());
+        $this->assertEquals(1, $result->getAttemptNumber());
+        $this->assertEquals(AcsControlInterface::ACTION_UPDATE, $result->getAction());
+        $this->assertEquals(null, $result->getExtraTime());
+        $this->assertEquals($date->format(DATE_ATOM), $result->getIncidentTime()->format(DATE_ATOM));
+        $this->assertEquals(null, $result->getIncidentSeverity());
+        $this->assertEquals('code', $result->getReasonCode());
+        $this->assertEquals('message', $result->getReasonMessage());
+    }
+
     /**
      * @dataProvider provideFailingData
      */
