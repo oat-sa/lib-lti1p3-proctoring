@@ -56,7 +56,8 @@ class AcsControlFactory implements AcsControlFactoryInterface
                 [
                     'title' => $resourceLinkData['title'] ?? null,
                     'text' => $resourceLinkData['description'] ?? null,
-                ]);
+                ]
+            );
 
             $userData = $data['user'] ?? null;
 
