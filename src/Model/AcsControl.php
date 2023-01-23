@@ -238,7 +238,9 @@ class AcsControl implements AcsControlInterface
                 'reason_code' => $this->reasonCode,
                 'reason_msg' => $this->reasonMessage,
             ],
-            static fn($element) => $element !== null
+            static function ($element) {
+                return $element !== null;
+            }
         );
     }
 }
