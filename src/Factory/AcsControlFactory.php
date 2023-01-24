@@ -56,7 +56,8 @@ class AcsControlFactory implements AcsControlFactoryInterface
                 [
                     'title' => $resourceLinkData['title'] ?? null,
                     'text' => $resourceLinkData['description'] ?? null,
-                ]);
+                ]
+            );
 
             $userData = $data['user'] ?? null;
 
@@ -94,8 +95,8 @@ class AcsControlFactory implements AcsControlFactoryInterface
                 throw new InvalidArgumentException('Missing mandatory incident_time');
             }
 
-            $extraTime = $data['extra_time'] ?? null;
-            $incidentSeverity = $data['incident_severity'] ?? null;
+            $extraTime = isset($data['extra_time']) ? (int)$data['extra_time'] : null;
+            $incidentSeverity = isset($data['incident_severity']) ? (float)$data['incident_severity'] : null;
 
             return new AcsControl(
                 $resourceLink,
@@ -104,8 +105,8 @@ class AcsControlFactory implements AcsControlFactoryInterface
                 new Carbon($incidentTime),
                 $attemptNumber,
                 $issuerIdentifier,
-                $extraTime ? intval($extraTime) : null,
-                $incidentSeverity ? floatval($incidentSeverity) : null,
+                $extraTime,
+                $incidentSeverity,
                 $data['reason_code'] ?? null,
                 $data['reason_msg'] ?? null
             );

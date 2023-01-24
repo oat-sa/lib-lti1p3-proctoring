@@ -40,8 +40,8 @@ class AcsControlResultFactory implements AcsControlResultFactoryInterface
             throw new LtiException('Cannot create ACS control result: Invalid status');
         }
 
-        $extraTime = $data['extra_time'] ?? null;
+        $extraTime = isset($data['extra_time']) ? (int)$data['extra_time'] : null;
 
-        return new AcsControlResult($status, $extraTime ? intval($extraTime) : null);
+        return new AcsControlResult($status, $extraTime);
     }
 }
