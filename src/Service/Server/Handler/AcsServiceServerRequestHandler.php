@@ -22,8 +22,8 @@ declare(strict_types=1);
 
 namespace OAT\Library\Lti1p3Proctoring\Service\Server\Handler;
 
-use Http\Message\ResponseFactory;
 use Nyholm\Psr7\Factory\HttplugFactory;
+use Nyholm\Psr7\Response;
 use OAT\Library\Lti1p3Core\Security\OAuth2\Validator\Result\RequestAccessTokenValidationResultInterface;
 use OAT\Library\Lti1p3Core\Service\Server\Handler\LtiServiceServerRequestHandlerInterface;
 use OAT\Library\Lti1p3Proctoring\Serializer\AcsControlResultSerializer;
@@ -49,19 +49,14 @@ class AcsServiceServerRequestHandler implements LtiServiceServerRequestHandlerIn
     /** @var AcsControlResultSerializerInterface */
     private $controlResultSerializer;
 
-    /** @var ResponseFactory */
-    private $factory;
-
     public function __construct(
         AcsServiceServerControlProcessorInterface $processor,
         ?AcsControlSerializerInterface $controlSerializer = null,
         ?AcsControlResultSerializerInterface $controlResultSerializer = null,
-        ?ResponseFactory $factory = null
     ) {
         $this->processor = $processor;
         $this->controlSerializer = $controlSerializer ?? new AcsControlSerializer();
         $this->controlResultSerializer = $controlResultSerializer ?? new AcsControlResultSerializer();
-        $this->factory = $factory ?? new HttplugFactory();
     }
 
     public function getServiceName(): string
@@ -106,6 +101,6 @@ class AcsServiceServerRequestHandler implements LtiServiceServerRequestHandlerIn
             'Content-Length' => strlen($responseBody),
         ];
 
-        return $this->factory->createResponse(200, null, $responseHeaders, $responseBody);
+        return new Response(200, $responseHeaders, $responseBody);
     }
 }

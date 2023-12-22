@@ -89,7 +89,6 @@ class AcsServiceServerRequestHandlerTest extends TestCase
         $this->server = new LtiServiceServer(
             $this->validatorMock,
             $this->subject,
-            null,
             $this->logger
         );
     }
