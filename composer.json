@@ -6,7 +6,7 @@
     "require": {
         "php": ">=8.0.0",
         "ext-json": "*",
-        "nesbot/carbon": "^2.72",
+        "nesbot/carbon": "^2.72 || ^3.0",
         "nyholm/psr7": "^1.8",
         "oat-sa/lib-lti1p3-core": "^7.0",
         "psr/http-message": "^1.1"
