@@ -9,7 +9,7 @@
         "nesbot/carbon": "^2.72",
         "nyholm/psr7": "^1.8",
         "oat-sa/lib-lti1p3-core": "^7.0",
-        "psr/http-message": "^1.1"
+        "psr/http-message": "^1.1 || ^2.0"
     },
     "require-dev": {
         "cache/array-adapter": "^1.1",
