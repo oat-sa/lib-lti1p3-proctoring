@@ -46,7 +46,7 @@ class StartAssessmentLaunchRequestBuilder extends ToolOriginatingLaunchBuilder
         string $startAssessmentUrl,
         string $sessionData,
         int $attemptNumber,
-        string $deploymentId = null,
+        ?string $deploymentId = null,
         array $optionalClaims = [],
         bool $endAssessmentReturn = false
     ): LtiMessageInterface {
@@ -82,7 +82,7 @@ class StartAssessmentLaunchRequestBuilder extends ToolOriginatingLaunchBuilder
     public function buildStartAssessmentLaunchRequestFromPayload(
         LtiMessagePayloadInterface $payload,
         RegistrationInterface $registration,
-        string $deploymentId = null,
+        ?string $deploymentId = null,
         array $optionalClaims = [],
         bool $endAssessmentReturn = false
     ): LtiMessageInterface {

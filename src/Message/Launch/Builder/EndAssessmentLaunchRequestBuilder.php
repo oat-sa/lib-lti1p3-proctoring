@@ -41,9 +41,9 @@ class EndAssessmentLaunchRequestBuilder extends PlatformOriginatingLaunchBuilder
     public function buildEndAssessmentLaunchRequest(
         RegistrationInterface $registration,
         string $loginHint,
-        string $endAssessmentUrl = null,
+        ?string $endAssessmentUrl = null,
         int $attemptNumber = 1,
-        string $deploymentId = null,
+        ?string $deploymentId = null,
         array $roles = ['http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'],
         array $optionalClaims = []
     ): LtiMessageInterface {
@@ -86,10 +86,10 @@ class EndAssessmentLaunchRequestBuilder extends PlatformOriginatingLaunchBuilder
         RegistrationInterface $registration,
         string $loginHint,
         string $errorMessage,
-        string $errorLog = null,
-        string $endAssessmentUrl = null,
+        ?string $errorLog = null,
+        ?string $endAssessmentUrl = null,
         int $attemptNumber = 1,
-        string $deploymentId = null,
+        ?string $deploymentId = null,
         array $roles = ['http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'],
         array $optionalClaims = []
     ): LtiMessageInterface {
