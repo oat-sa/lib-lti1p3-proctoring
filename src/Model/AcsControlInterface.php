@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2021 (original work) Open Assessment Technologies SA;
+ * Copyright (c) 2025 (original work) Open Assessment Technologies SA;
  */
 
 declare(strict_types=1);
@@ -37,6 +37,8 @@ interface AcsControlInterface extends JsonSerializable
     public const ACTION_TERMINATE = 'terminate';
     public const ACTION_UPDATE = 'update';
     public const ACTION_FLAG = 'flag';
+    public const ACTION_DELETE = 'delete';
+    public const ACTION_RESET = 'reset';
 
     public const SUPPORTED_ACTIONS = [
         self::ACTION_PAUSE,
@@ -44,6 +46,7 @@ interface AcsControlInterface extends JsonSerializable
         self::ACTION_TERMINATE,
         self::ACTION_UPDATE,
         self::ACTION_FLAG,
+        self::ACTION_RESET,
     ];
 
     public function getResourceLink(): LtiResourceLinkInterface;
