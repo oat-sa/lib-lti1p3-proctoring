@@ -8,7 +8,7 @@
         "ext-json": "*",
         "nesbot/carbon": "^2.72 || ^3.0",
         "nyholm/psr7": "^1.8",
-        "oat-sa/lib-lti1p3-core": "dev-feat/TR-6514/php-84 as 7.2.1",
+        "oat-sa/lib-lti1p3-core": "7.2.2",
         "psr/http-message": "^1.1 || ^2.0"
     },
     "require-dev": {
