@@ -8,15 +8,15 @@
         "ext-json": "*",
         "nesbot/carbon": "^2.72 || ^3.0",
         "nyholm/psr7": "^1.8",
-        "oat-sa/lib-lti1p3-core": "^7.0",
+        "oat-sa/lib-lti1p3-core": "7.2.2",
         "psr/http-message": "^1.1 || ^2.0"
     },
     "require-dev": {
         "cache/array-adapter": "^1.1",
         "phpunit/phpunit": "^9.6",
         "php-coveralls/php-coveralls": "^2.4",
-        "vimeo/psalm": "^4.6",
-        "psalm/plugin-phpunit": "^0.15"
+        "vimeo/psalm": "^4.6 || ^5.25 || ^6.8",
+        "psalm/plugin-phpunit": "^0.19"
     },
     "autoload": {
         "psr-4": {

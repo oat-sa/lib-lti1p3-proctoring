@@ -46,7 +46,7 @@ class StartProctoringLaunchRequestBuilder extends PlatformOriginatingLaunchBuild
         string $startAssessmentUrl,
         string $loginHint,
         int $attemptNumber = 1,
-        string $deploymentId = null,
+        ?string $deploymentId = null,
         array $roles = ['http://purl.imsglobal.org/vocab/lis/v2/membership#Learner'],
         array $optionalClaims = []
     ): LtiMessageInterface {

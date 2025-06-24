@@ -16,6 +16,17 @@
             <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
+    <issueHandlers>
+        <MissingOverrideAttribute errorLevel="suppress" />
+        <PossiblyUnusedMethod errorLevel="suppress" />
+        <UnusedClass errorLevel="suppress" />
+        <PossiblyUnusedReturnValue>
+            <errorLevel type="suppress">
+                <file name="src/Model/AcsControlInterface.php" />
+                <file name="src/Model/AcsControlResultInterface.php" method="setStatus"/>
+            </errorLevel>
+        </PossiblyUnusedReturnValue>
+    </issueHandlers>
     <mockClasses>
         <class name="PHPUnit\Framework\MockObject\MockObject"/>
     </mockClasses>

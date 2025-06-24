@@ -265,7 +265,7 @@ class AcsServiceServerRequestHandlerTest extends TestCase
         $this->assertTrue($this->logger->hasLog(LogLevel::ERROR, 'generic error'));
     }
 
-    private function createTestProcessor(callable $func = null): AcsServiceServerControlProcessorInterface
+    private function createTestProcessor(?callable $func = null): AcsServiceServerControlProcessorInterface
     {
         return new class ($func) implements AcsServiceServerControlProcessorInterface
         {
