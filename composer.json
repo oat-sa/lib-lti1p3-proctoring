@@ -3,12 +3,18 @@
     "description": "OAT LTI 1.3 Proctoring Library",
     "type": "library",
     "license": "GPL-2.0-only",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/armatronic/lib-lti1p3-core"
+        }
+    ],
     "require": {
         "php": ">=8.0.0",
         "ext-json": "*",
         "nesbot/carbon": "^2.72 || ^3.0",
         "nyholm/psr7": "^1.8",
-        "oat-sa/lib-lti1p3-core": "7.2.2",
+        "oat-sa/lib-lti1p3-core": "dev-lcobucci-jwt-5.0-support as 7.2.2",
         "psr/http-message": "^1.1 || ^2.0"
     },
     "require-dev": {
